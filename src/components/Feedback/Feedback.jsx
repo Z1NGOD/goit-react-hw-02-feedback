@@ -9,6 +9,7 @@ import {
   StatisticList,
   StatisticItem,
 } from './Feedback.styled';
+
 export default class Feedback extends Component {
   static propTypes = {
     prop: PropTypes.object,
@@ -19,6 +20,7 @@ export default class Feedback extends Component {
     neutral: PropTypes.number.isRequired,
     bad: PropTypes.number.isRequired,
   };
+
   state = {
     good: 0,
     neutral: 0,
@@ -34,16 +36,20 @@ export default class Feedback extends Component {
       bad: selectedValue === 'bad' ? prevState.bad + 1 : prevState.bad,
     }));
   };
+
   calculatePositivePercentage = () => {
-    const { good, neutral, bad } = this.state;
-    const total = good + neutral + bad;
+    const { good } = this.state;
+    const total = this.state.good + this.state.neutral + this.state.bad;
+
     if (total !== 0) {
       return ((good / total) * 100).toFixed(2);
     }
     return '0';
   };
+
   render() {
     const { good, neutral, bad } = this.state;
+    const total = good + neutral + bad;
 
     return (
       <Container>
@@ -60,15 +66,20 @@ export default class Feedback extends Component {
           </Btn>
         </BtnList>
         <SecondaryText>Statistics</SecondaryText>
-        <StatisticList>
-          <StatisticItem>good: {good}</StatisticItem>
-          <StatisticItem>neutral: {neutral}</StatisticItem>
-          <StatisticItem>bad: {bad}</StatisticItem>
-          <StatisticItem>total: {good + neutral + bad}</StatisticItem>
-          <StatisticItem>
-            Positive Feedback percentage:{this.calculatePositivePercentage()}%
-          </StatisticItem>
-        </StatisticList>
+        {total !== 0 ? (
+          <StatisticList>
+            <StatisticItem>good: {good}</StatisticItem>
+            <StatisticItem>neutral: {neutral}</StatisticItem>
+            <StatisticItem>bad: {bad}</StatisticItem>
+            <StatisticItem>total: {total}</StatisticItem>
+            <StatisticItem>
+              Positive Feedback percentage: {this.calculatePositivePercentage()}
+              %
+            </StatisticItem>
+          </StatisticList>
+        ) : (
+          'there is no statistic given'
+        )}
       </Container>
     );
   }
