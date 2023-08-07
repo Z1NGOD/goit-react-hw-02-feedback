@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Statistic from './Statistic/Statistic';
 import Section from './Section/Section';
 import { Container } from 'ui/ui.styled';
+
 export class App extends Component {
   static propTypes = {
     good: PropTypes.number,
@@ -20,10 +21,8 @@ export class App extends Component {
   handleIncrescent = e => {
     const selectedValue = e.target.value;
     this.setState(prevState => ({
-      good: selectedValue === 'good' ? prevState.good + 1 : prevState.good,
-      neutral:
-        selectedValue === 'neutral' ? prevState.neutral + 1 : prevState.neutral,
-      bad: selectedValue === 'bad' ? prevState.bad + 1 : prevState.bad,
+      ...prevState,
+      [selectedValue]: prevState[selectedValue] + 1,
     }));
   };
 
@@ -40,10 +39,14 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const total = good + neutral + bad;
+
     return (
       <Container>
         <Section title="Please leave feedback">
-          <Feedback handleIncrescent={this.handleIncrescent} />
+          <Feedback
+            handleIncrescent={this.handleIncrescent}
+            stateNames={Object.keys(this.state)}
+          />
         </Section>
         <Section title="Statistics">
           <Statistic
