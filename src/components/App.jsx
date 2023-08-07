@@ -27,25 +27,22 @@ export class App extends Component {
   };
 
   calculatePositivePercentage = () => {
-    const { good } = this.state;
-    const total = this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+    const total = good + neutral + bad;
 
-    if (total !== 0) {
-      return ((good / total) * 100).toFixed(2);
-    }
-    return '0';
+    return total !== 0 ? ((good / total) * 100).toFixed(2) : '0';
   };
 
   render() {
     const { good, neutral, bad } = this.state;
     const total = good + neutral + bad;
-
+    const stateNames = Object.keys(this.state);
     return (
       <Container>
         <Section title="Please leave feedback">
           <Feedback
             handleIncrescent={this.handleIncrescent}
-            stateNames={Object.keys(this.state)}
+            stateNames={stateNames}
           />
         </Section>
         <Section title="Statistics">
