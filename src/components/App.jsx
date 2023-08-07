@@ -17,7 +17,7 @@ export class App extends Component {
     bad: 0,
   };
 
-  HandleIncrescent = e => {
+  handleIncrescent = e => {
     const selectedValue = e.target.value;
     this.setState(prevState => ({
       good: selectedValue === 'good' ? prevState.good + 1 : prevState.good,
@@ -43,7 +43,7 @@ export class App extends Component {
     return (
       <Container>
         <Section title="Please leave feedback">
-          <Feedback HandleIncrescent={this.HandleIncrescent} />
+          <Feedback handleIncrescent={this.handleIncrescent} />
         </Section>
         <Section title="Statistics">
           <Statistic

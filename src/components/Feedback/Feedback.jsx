@@ -2,23 +2,27 @@ import React from 'react';
 import { BtnList, Btn } from './Feedback.styled';
 import PropTypes from 'prop-types';
 
-export default function Feedback({ HandleIncrescent }) {
+export default function Feedback({ handleIncrescent }) {
+  const feedbackOptions = ['good', 'neutral', 'bad'];
+
   return (
     <>
       <BtnList>
-        <Btn onClick={HandleIncrescent} type="button" value={'good'}>
-          good
-        </Btn>
-        <Btn onClick={HandleIncrescent} type="button" value={'neutral'}>
-          neutral
-        </Btn>
-        <Btn onClick={HandleIncrescent} type="button" value={'bad'}>
-          bad
-        </Btn>
+        {feedbackOptions.map(option => (
+          <Btn
+            key={option}
+            onClick={handleIncrescent}
+            type="button"
+            value={option}
+          >
+            {option}
+          </Btn>
+        ))}
       </BtnList>
     </>
   );
 }
+
 Feedback.propTypes = {
-    HandleIncrescent: PropTypes.func.isRequired,
-}
+  handleIncrescent: PropTypes.func.isRequired,
+};
