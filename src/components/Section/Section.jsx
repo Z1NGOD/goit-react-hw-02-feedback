@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { MainText } from './Section.styled';
 function Section({ title, children }) {
   return (
