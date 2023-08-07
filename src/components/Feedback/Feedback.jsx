@@ -1,11 +1,10 @@
 import React from 'react';
-import { MainText, BtnList, Btn } from './Feedback.styled';
+import { BtnList, Btn } from './Feedback.styled';
 import PropTypes from 'prop-types';
 
 export default function Feedback({ HandleIncrescent }) {
   return (
     <>
-      <MainText> Please leave feedback</MainText>
       <BtnList>
         <Btn onClick={HandleIncrescent} type="button" value={'good'}>
           good

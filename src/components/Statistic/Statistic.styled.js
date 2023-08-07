@@ -9,11 +9,4 @@ const StatisticItem = styled.li`
   margin-bottom: 8px;
   color: #333;
 `;
-const SecondaryText = styled.h2`
-  font-size: 24px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  text-align: center;
-  color: #666;
-`;
-export { StatisticList, StatisticItem, SecondaryText};
+export { StatisticList, StatisticItem};

@@ -2,12 +2,13 @@ import Feedback from './Feedback/Feedback';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Statistic from './Statistic/Statistic';
+import Section from './Section/Section';
 import { Container } from 'ui/ui.styled';
 export class App extends Component {
   static propTypes = {
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
   };
 
   state = {
@@ -41,14 +42,18 @@ export class App extends Component {
     const total = good + neutral + bad;
     return (
       <Container>
-        <Feedback HandleIncrescent={this.HandleIncrescent} />
-        <Statistic
-          calculatePositivePercentage={this.calculatePositivePercentage}
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={total}
-        />
+        <Section title="Please leave feedback">
+          <Feedback HandleIncrescent={this.HandleIncrescent} />
+        </Section>
+        <Section title="Statistics">
+          <Statistic
+            calculatePositivePercentage={this.calculatePositivePercentage}
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+          />
+        </Section>
       </Container>
     );
   }

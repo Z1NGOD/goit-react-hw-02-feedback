@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StatisticItem, StatisticList, SecondaryText } from './Statistic.styled';
+import { StatisticItem, StatisticList } from './Statistic.styled';
 function Statistic({good,bad,neutral,total,calculatePositivePercentage}) {
   return (
     <>
-      <SecondaryText>Statistics</SecondaryText>
       {total !== 0 ? (
         <StatisticList>
           <StatisticItem>good: {good}</StatisticItem>
