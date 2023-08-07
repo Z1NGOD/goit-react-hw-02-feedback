@@ -32,23 +32,4 @@ const Btn = styled.button`
   }
 `;
 
-const SecondaryText = styled.h2`
-  font-size: 24px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  text-align: center;
-  color: #666;
-`;
-
-const StatisticList = styled.ul`
-  list-style: none;
-  padding: 0;
-`;
-
-const StatisticItem = styled.li`
-  font-size: 20px;
-  margin-bottom: 8px;
-  color: #333;
-`;
-
-export { MainText, BtnList, Btn, SecondaryText, StatisticList, StatisticItem };
+export { MainText, BtnList, Btn};
